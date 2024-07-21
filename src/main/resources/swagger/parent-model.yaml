@@ -1,0 +1,11 @@
+components:
+  schemas:
+    ApiModel:
+      type: object
+      properties:
+        id:
+          type: string
+          description: "id of a certain model"
+        name:
+          type: string
+          description: "the name of the model"

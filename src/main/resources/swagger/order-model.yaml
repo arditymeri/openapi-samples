@@ -1,0 +1,49 @@
+components:
+  schemas:
+    OrderCreateRequest:
+      type: object
+      properties:
+        orderName:
+          type: string
+          description: "The name of the order"
+        orderDescription:
+          type: string
+          description: "The description of the order"
+
+    OrderCreateResponse:
+      type: object
+      properties:
+        responseCommon:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "1 order created successfully"
+        response:
+          $ref: "#/components/schemas/Order"
+
+    OrderGetResponse:
+      type: object
+      properties:
+        responseCommon:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "1 order created successfully"
+        response:
+          $ref: "#/components/schemas/Order"
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+        orderName:
+          type: string
+          description: "The name of the file"
+        orderDescription:
+          type: array
+          items:
+            type: string
+

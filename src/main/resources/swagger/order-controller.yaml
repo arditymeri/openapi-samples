@@ -1,0 +1,72 @@
+openapi: "3.0.0"
+tags:
+  - name: "OrderController"
+    description: "Controller to manage the orders"
+info:
+  title: "A REST controller to manage stored orders"
+  description: "This API manages the orders stored/to store"
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:8080"
+paths:
+  /order:
+    post:
+      summary: "Upload a new order."
+      operationId: createOrder
+      description: "Create a new order."
+      tags:
+        - orderController
+      requestBody:
+        description: "Order description."
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'order-model.yaml#/components/schemas/OrderCreateRequest'
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: 'order-model.yaml#/components/schemas/OrderCreateResponse'
+
+  /orders/{orderId}:
+    get:
+      summary: "Get an order"
+      operationId: getOrder
+      description: "Get an existing order"
+      tags:
+        - orderController
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: 'order-model.yaml#/components/schemas/OrderGetResponse'
+
+  /orders:
+    get:
+      summary: "List all orders"
+      operationId: listOrders
+      description: "Get all files"
+      tags:
+        - orderController
+
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'order-model.yaml#/components/schemas/OrderGetResponse'
