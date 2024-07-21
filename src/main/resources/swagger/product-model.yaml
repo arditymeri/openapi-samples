@@ -1,51 +1,51 @@
 components:
   schemas:
-    OrderCreateRequest:
+    ProductCreateRequest:
       type: object
       properties:
-        orderName:
+        productName:
           type: string
-          description: "The name of the order"
-        orderDescription:
+          description: "The name of the product"
+        productDescription:
           type: string
-          description: "The description of the order"
+          description: "The description of the product"
 
-    OrderCreateResponse:
+    ProductCreateResponse:
       type: object
-      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Order>"]
+      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Product>"]
       properties:
         responseCommon:
           type: object
           properties:
             message:
               type: string
-              example: "1 order created successfully"
+              example: "1 product created successfully"
         response:
-          $ref: "#/components/schemas/Order"
+          $ref: "#/components/schemas/Product"
 
-    OrderGetResponse:
+    ProductGetResponse:
       type: object
-      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Order>"]
+      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Product>"]
       properties:
         responseCommon:
           type: object
           properties:
             message:
               type: string
-              example: "1 order created successfully"
+              example: "1 product created successfully"
         response:
-          $ref: "#/components/schemas/Order"
+          $ref: "#/components/schemas/Product"
 
-    Order:
+    Product:
       type: object
       allOf:
         - $ref: "parent-model.yaml#/components/schemas/ApiModel"
         - type: object
           properties:
-            orderName:
+            productName:
               type: string
               description: "The name of the file"
-            orderDescription:
+            productDescription:
               type: array
               items:
                 type: string

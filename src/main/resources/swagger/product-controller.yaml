@@ -1,0 +1,72 @@
+openapi: "3.0.0"
+tags:
+  - name: "ProductController"
+    description: "Controller to manage the products"
+info:
+  title: "A REST controller to manage stored products"
+  description: "This API manages the products stored/to store"
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:8080"
+paths:
+  /product:
+    post:
+      summary: "Upload a new product."
+      operationId: createProduct
+      description: "Create a new product."
+      tags:
+        - productController
+      requestBody:
+        description: "Product description."
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'product-model.yaml#/components/schemas/ProductCreateRequest'
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: 'product-model.yaml#/components/schemas/ProductCreateResponse'
+
+  /products/{productId}:
+    get:
+      summary: "Get an product"
+      operationId: getProduct
+      description: "Get an existing product"
+      tags:
+        - productController
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: 'product-model.yaml#/components/schemas/ProductGetResponse'
+
+  /products:
+    get:
+      summary: "List all products"
+      operationId: listProducts
+      description: "Get all files"
+      tags:
+        - productController
+
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'product-model.yaml#/components/schemas/ProductGetResponse'
