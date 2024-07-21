@@ -12,27 +12,19 @@ components:
 
     ProductCreateResponse:
       type: object
-      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Product>"]
+      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Product,at.ymeri.open_api_samples.dto.ResponseCommon>"]
       properties:
         responseCommon:
-          type: object
-          properties:
-            message:
-              type: string
-              example: "1 product created successfully"
+          $ref: "response-common.yaml#/components/schemas/ResponseCommon"
         response:
           $ref: "#/components/schemas/Product"
 
     ProductGetResponse:
       type: object
-      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Product>"]
+      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Product,at.ymeri.open_api_samples.dto.ResponseCommon>"]
       properties:
         responseCommon:
-          type: object
-          properties:
-            message:
-              type: string
-              example: "1 product created successfully"
+          $ref: "response-common.yaml#/components/schemas/ResponseCommon"
         response:
           $ref: "#/components/schemas/Product"
 

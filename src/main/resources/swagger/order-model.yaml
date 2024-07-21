@@ -12,27 +12,19 @@ components:
 
     OrderCreateResponse:
       type: object
-      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Order>"]
+      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Order,at.ymeri.open_api_samples.dto.ResponseCommon>"]
       properties:
         responseCommon:
-          type: object
-          properties:
-            message:
-              type: string
-              example: "1 order created successfully"
+          $ref: "response-common.yaml#/components/schemas/ResponseCommon"
         response:
           $ref: "#/components/schemas/Order"
 
     OrderGetResponse:
       type: object
-      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Order>"]
+      x-implements: ["at.ymeri.open_api_samples.dto.ResponseInterface<at.ymeri.open_api_samples.dto.Order,at.ymeri.open_api_samples.dto.ResponseCommon>"]
       properties:
         responseCommon:
-          type: object
-          properties:
-            message:
-              type: string
-              example: "1 order created successfully"
+          $ref: "response-common.yaml#/components/schemas/ResponseCommon"
         response:
           $ref: "#/components/schemas/Order"
 

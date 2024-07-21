@@ -1,6 +1,7 @@
 package at.ymeri.open_api_samples.controller;
 
 import at.ymeri.open_api_samples.dto.*;
+import at.ymeri.open_api_samples.factory.ResponseFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,19 +15,15 @@ public class OrderController implements OrderControllerApi {
         order.setOrderName("name");
         order.setId("id");
 
-        OrderCreateResponseResponseCommon common = new OrderCreateResponseResponseCommon();
-        common.setMessage("success");
-
-        OrderCreateResponse body = new OrderCreateResponse();
-        body.setResponse(order);
-        body.setResponseCommon(common);
-
-        return ResponseEntity.ok().body(body);
+        return ResponseFactory.createResponse("message", order, new OrderCreateResponse());
     }
 
 
     @Override
     public ResponseEntity<OrderGetResponse> getOrder(String orderId) {
-        return OrderControllerApi.super.getOrder(orderId);
+        Order order = new Order();
+        order.setId(orderId);
+        order.setName("name");
+        return ResponseFactory.createResponse("message", order, new OrderGetResponse());
     }
 }
